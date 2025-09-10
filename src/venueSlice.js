@@ -1,6 +1,13 @@
 // venueSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
+const ROOM_MAX_CAPACITY = {
+    "Auditorium Hall (Capacity 200)": 3,
+    "Conference Room (Capacity:15)": 40,
+    "Presentation Room (Capacity:50)": 12,
+    "Large Meeting Room (Capacity:10)": 20,
+    "Small Meeting Room (Capacity:5)": 15,
+}
 export const venueSlice = createSlice({
   name: "venue",
   initialState: [
@@ -38,13 +45,13 @@ export const venueSlice = createSlice({
   ],
   reducers: {
    
-    incrementQuantity: (state, action) => {
-      const { payload: index } = action;
-      if (state[index]) {
-        if (state[index].name === " Auditorium Hall (Capacity:200)" && state[index].quantity >= 3) {
-          return;        }
-        state[index].quantity++;
-      }
+    incrementQuantity: (state, action) {
+        const { payload: index } = action;
+        const roomName = state[index].name;
+        const maxQuantity = ROOM_MAX_CAPACITY[roomName];
+        if (state[index].quantity >= maxQuantity) {
+            return;
+        } state[index].quantity++;
     },
     decrementQuantity: (state, action) => {
       const { payload: index } = action;
