@@ -3,12 +3,14 @@ import "./ConferenceEvent.css";
 import TotalCost from "./TotalCost";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementQuantity, decrementQuantity } from "./venueSlice";
+import { roomMaxCapacity } from "./venueSlice";
+
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const venueItems = useSelector((state) => state.venue);
     const dispatch = useDispatch();
-    const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
+    
 
     
     const handleToggleItems = () => {
@@ -99,48 +101,39 @@ const ConferenceEvent = () => {
               </div>
               <div className="text">{item.name}</div>
               <div>${item.cost}</div>
-     <div className="button_container">
-        {venueItems[index].name === "Auditorium Hall (Capacity:200)" ? (
+              <div className="button_container">
+  {(() => {
+    // This is the key line: using square brackets [] to access the object property
+    const maxQuantity = roomMaxCapacity[item.name]; 
+    const isIncrementDisabled = item.quantity >= maxQuantity;
+    const isDecrementDisabled = item.quantity === 0;
 
-          <>
-          <button
-            className={venueItems[index].quantity === 0 ? "btn-warning btn-disabled" : "btn-minus btn-warning"}
-            onClick={() => handleRemoveFromCart(index)}
-          >
-            &#8211;
-          </button>
-          <span className="selected_count">
-            {venueItems[index].quantity > 0 ? ` ${venueItems[index].quantity}` : "0"}
-          </span>
-          <button
-            className={remainingAuditoriumQuantity === 0? "btn-success btn-disabled" : "btn-success btn-plus"}
-            onClick={() => handleAddToCart(index)}
-          >
-            &#43;
-          </button>
-        </>
-        ) : (
-          <div className="button_container">
-           <button
-              className={venueItems[index].quantity ===0 ? " btn-warning btn-disabled" : "btn-warning btn-plus"}
-              onClick={() => handleRemoveFromCart(index)}
-            >
-               &#8211;
-            </button>
-            <span className="selected_count">
-              {venueItems[index].quantity > 0 ? ` ${venueItems[index].quantity}` : "0"}
-            </span>
-            <button
-              className={venueItems[index].quantity === 10 ? " btn-success btn-disabled" : "btn-success btn-plus"}
-              onClick={() => handleAddToCart(index)}
-            >
-             &#43;
-            </button>
-            
-            
-          </div>
-        )}
-      </div>
+    return (
+      <>
+        {/* Minus Button: Disabled if quantity is 0 */}
+        <button
+          className={isDecrementDisabled ? "btn-warning btn-disabled" : "btn-warning btn-plus"}
+          onClick={() => handleRemoveFromCart(index)}
+        >
+          &#8211;
+        </button>
+        
+        {/* Quantity Display */}
+        <span className="selected_count">
+          {item.quantity > 0 ? ` ${item.quantity}` : "0"}
+        </span>
+        
+        {/* Plus Button: Disabled if at max capacity */}
+        <button
+          className={isIncrementDisabled ? "btn-success btn-disabled" : "btn-success btn-plus"}
+          onClick={() => handleAddToCart(index)}
+        >
+          &#43;
+        </button>
+      </>
+    );
+  })()}
+</div>
             </div>
           ))}
         </div>
