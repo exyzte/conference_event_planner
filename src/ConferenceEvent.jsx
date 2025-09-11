@@ -188,7 +188,11 @@ const ConferenceEvent = () => {
                                 </div>
 
                                 <div className="input-container venue_selection">
-                                    
+                                    <label htmlFor="numberOfPeople"><h3>Number of people:</h3></label>
+                                    <input type="number" name="input_box5" className="input_box5" id="numberOfPeople" value={numberOfPeople}
+                                        onChange={(e) => setNumberOfPeople(parseInt(e.target.value))}
+                                        min="1"                                    
+                                        />
                                 </div>
                                 <div className="meal_selection">
 
