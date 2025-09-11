@@ -4,14 +4,16 @@ import TotalCost from "./TotalCost";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementQuantity, decrementQuantity } from "./venueSlice";
 import { roomMaxCapacity } from "./venueSlice";
+import { incrementAvQuantity, decrementAvQuantity } from "./avSlice";
+import { incrementMealQuantity, decrementMealQuantity } from './mealsSlice';
+
 
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const venueItems = useSelector((state) => state.venue);
+    const avItems = useSelector((state) => state.av);
     const dispatch = useDispatch();
-    
-
     
     const handleToggleItems = () => {
         console.log("handleToggleItems called");
@@ -19,9 +21,6 @@ const ConferenceEvent = () => {
     };
 
     const handleAddToCart = (index) => {
-        if (venueItems[index].name === "Auditorium Hall (Capacity:200)" && venueItems[index].quantity >= 3) {
-          return; 
-        }
         dispatch(incrementQuantity(index));
       };
     
@@ -31,12 +30,15 @@ const ConferenceEvent = () => {
         }
       };
     const handleIncrementAvQuantity = (index) => {
+          dispatch(incrementAvQuantity(index));
     };
 
     const handleDecrementAvQuantity = (index) => {
+          dispatch(decrementAvQuantity(index));
     };
 
     const handleMealSelection = (index) => {
+
        
     };
 
@@ -53,12 +55,21 @@ const ConferenceEvent = () => {
         let totalCost = 0;
         if (section === "venue") {
           venueItems.forEach((item) => {
-            totalCost += item.cost * item.quantity;
+                totalCost += item.cost * item.quantity;
           });
+        } else if (section === "addons") {
+            addonsItems.forEach((item) => {
+                totalCost += item.cost * item.quantity;
+            });
+        }  else if (section = "meal") {
+            mealItems.forEach((item) => {
+                totalCost += item.cost * item.quantity;
+            });
         }
         return totalCost;
       };
     const venueTotalCost = calculateTotalCost("venue");
+    const avTotalCost = calculateTotalCost("av")
 
     const navigateToProducts = (idType) => {
         if (idType == '#venue' || idType == '#addons' || idType == '#meals') {
@@ -150,10 +161,21 @@ const ConferenceEvent = () => {
 
                                 </div>
                                 <div className="addons_selection">
-
+                                    { avItems.map((item, index) => {
+                                        <div className="av_data venue_main" key={index}>
+                                            <img src={item.img} alt={item.name} />
+                                        <div className="text"> {item.name} </div>
+                                        <div> {item.const} </div>
+                                            <div className="addons_btn">
+                                                <button className="btn-warning" onClick={()=>handleDecrementAvQuantity}>&ndash;</button>
+                                                <span className="quantity-value">{item.quantity}</span>
+                                                <button className="btn-success" onClick={handleIncrementAvQuantity}>&#43;</button>
+                                            </div>
+                                        </div>
+                                    })}
                                 </div>
-                                <div className="total_cost">Total Cost:</div>
-
+                                <div className="total_cost">Total Cost: {avTotalCost}</div>
+                                    
                             </div>
 
                             {/* Meal Section */}
@@ -166,7 +188,7 @@ const ConferenceEvent = () => {
                                 </div>
 
                                 <div className="input-container venue_selection">
-
+                                    
                                 </div>
                                 <div className="meal_selection">
 
