@@ -14,6 +14,10 @@ const ConferenceEvent = () => {
     const venueItems = useSelector((state) => state.venue);
     const avItems = useSelector((state) => state.av);
     const mealsItems = useSelector((state) => state.meals);
+    const mealsItemsWithType = mealsItems.map((item)=> ({
+        ...item,
+        type: "mealForPeople"
+    }));
     const dispatch = useDispatch();
     
     
@@ -31,9 +35,6 @@ const ConferenceEvent = () => {
           dispatch(decrementQuantity(index));
         }
       };
-    const handleIncrementAvQuantity = (index) => {
-          dispatch(incrementAvQuantity(index));
-    };
 
     const handleDecrementAvQuantity = (index) => {
           dispatch(decrementAvQuantity(index));
