@@ -1,335 +1,388 @@
-/* Venue selection styles */
-.venue_container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-    width: 80vw;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-  }
-  
-  .venue_selection,.addons_selection , .meal_selection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    width: 90vw;
-    margin-left: 250px;
-  }
-  
-  .venue_main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    color: #333;
-    width: 300px;
-  }
-  .text h1{
-    width: 900px;
-    font-size: 40px;
-    background-color: #133b6a;
-    color: white;
-    width:990px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-  }
-  .venue_main .text {
-    font-size: 30px;
-    color: #333;
-  }
-  .quantity-value {
-    margin: 0 10px;
-  }
-  .main_container{
-    display: flex;    
-  }
-  .items-information {
-    display: flex;
-    flex-direction: column;
-    gap: 90px;
-    margin-top: 100px;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-  
-  }
-  .meal_item {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .total_cost {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-size: 30px;
-    color: #333;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 10px;
-    width: 400px;
-    margin-top: 15px;
-  }
-  
-  .av_data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    color: #000;
-  }
 
-  .input-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 20px;
-  }
-  .input-container input {
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid lightgrey;
-    padding: 13px;
-  }
-  .meal_selection {
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  .meal_selection input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-  }
-  .meal_selection label {
-    font-size: 25px;
-  }
-  .meal_item .inner {
-    display: flex;
-    flex-direction: row;
-  }
-  .meal_item .inner input {
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid lightgrey;
-    padding: 5px;
-  }
-  .meal_item .meal_cost {
-    display: flex;
+
+:root {
+  --primary-color: #567582; 
+  --secondary-color: #596e79;
+  --accent-color: #ede7cf; //
+  --text-color-dark: #212121;
+  --text-color-light: #f5f5f5;
+  --background-light: #e3f2fd; /* Light Blue background */
+  --card-background: #ffffff;
+  --border-color: #cfd8dc;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/*
+  =================================
+  Navbar Styling
+  =================================
+*/
+
+.navbar_event_conference {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.company_logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #c1e8da;
+}
+
+.left_navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav_links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav_links a {
+  color: var(--text-color-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition-speed);
+}
+
+.nav_links a:hover {
+  color: var(--accent-color);
+}
+
+.details_button {
+  padding: 10px 20px;
+  background-color: #9e9182;
+  color: var(--text-color-dark);
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.details_button:hover {
+  background-color: #f0ece2;
+  transform: translateY(-2px);
+}
+
+/*
+  =================================
+  Main Container & Sections
+  =================================
+*/
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.items-information {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.venue_container, .addons_container, .meals_container {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--card-background);
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-speed);
+  width: 100%;
+}
+
+.venue_container:hover, .addons_container:hover, .meals_container:hover {
+  transform: translateY(-5px);
+}
+
+.venue_container .text h1 {
+  width: 100%;
+  max-width: 900px;
+  font-size: 2.5rem;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 0 auto 30px;
+}
+
+/*
+  =================================
+  Item Selection Grid
+  =================================
+*/
+
+.venue_selection, .addons_selection, .meal_selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px 0;
+}
+
+.venue_main, .av_data, .meal_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-light);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-speed);
+}
+
+.venue_main:hover, .av_data:hover, .meal_item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.venue_main .img img, .av_data .img img {
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.venue_main .text, .av_data .text, .meal_item label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  color: var(--secondary-color);
+}
+
+.venue_main div, .av_data div, .meal_item .meal_cost {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.button_container, .addons_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-success, .btn-warning {
+  padding: 8px 15px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-weight: 700;
+}
+
+.btn-warning {
+  background-color: #aaa6a4; 
+  color: var(--text-color-light);
+}
+
+.btn-success {
+  background-color: #54777d; 
+  color: var(--text-color-light);
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-value, .selected_count {
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.total_cost {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input_box5 {
+  width: 100px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.meal_item .inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meal_selection input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/*
+  =================================
+  Total Cost Display Table
+  =================================
+*/
+
+.table_item_data {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table_item_data th, .table_item_data td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.table_item_data th {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.table_item_data tbody tr:nth-child(even) {
+  background-color: var(--background-light);
+}
+
+.table_item_data tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.display_box1 {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: var(--card-background);
+}
+
+.display_box1::-webkit-scrollbar {
+  width: 8px;
+}
+
+.display_box1::-webkit-scrollbar-track {
+  background: var(--background-light);
+}
+
+.display_box1::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 10px;
+}
+
+/*
+  =================================
+  Responsive Design (Mobile First)
+  =================================
+*/
+
+@media (max-width: 768px) {
+  .navbar_event_conference {
     flex-direction: column;
-    font-size: 25px;
+    padding: 10px;
+    gap: 10px;
   }
-  .venue_main .img img {
+  
+  .left_navbar {
+    flex-direction: column;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+    gap: 10px;
   }
-  .display_box1 {
-    margin-top: 20px;
-    overflow-y: auto;
-    height: 300px;
-    scrollbar-width: thin;
-    scrollbar-color: #b7b4b4 transparent; 
+
+  .nav_links {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
   }
-  
-  .display_box1::-webkit-scrollbar {
-    width: 8px; /* For Chrome, Safari, and Opera */
-  
+
+  .details_button {
+    width: 100%;
+    max-width: 250px;
   }
-  
-  .display_box1::-webkit-scrollbar-track {
-    background-color: transparent; /* For Chrome, Safari, and Opera */
-    
+
+  .venue_container .text h1 {
+    font-size: 1.8rem;
+    padding: 10px;
   }
-  
-  .display_box1::-webkit-scrollbar-thumb {
-    background-color: #ffffff; /* For Chrome, Safari, and Opera */
-  }
-  
-  .display_box1 {
-    padding-left: 20px;
-  }
-  .addons_btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-  }
-  .btn-success {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #5291D9;
-    color: black;
-    border: none;
-    width: 10px;
-    height: 30px;
-     border-radius: 5px;
-    cursor: pointer;
-  }
-  .btn-warning {
-    background-color: #52D7D9;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-    color: black;
-    width: 10px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .input-container .input_box5{
-    height: 40px;
-    width: 200px;
-    font-size: 20px;
-  }
-  
-  .items_view{
-    font-size: 20px;
-  }
-  .table_item_data {
-    width: 70vw;
-    border-collapse: collapse;
-    margin-left: -6px;
-    
-  }
-  
-  .table_item_data th,
-  .table_item_data td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    font-size: 23px;
-    
-  }
-  
-  .table_item_data th {
-    background-color: #f2f2f2;
-  }
-  
-  .table_item_data tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .table_item_data tbody tr:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .table_item_data tbody tr:first-child:hover {
-    background-color: transparent;
-  }
-  navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px;
-    background-color:#133b6a;
-    color: white;
-    width: 100vw;
-  }
-  
-  .company_logo {
-    font-size: 30px;
-    color: #000000;
-    font-weight: 700;
-  }
-  .nav_links{
-    display: flex;
-    gap: 170px;
-  }
-  .left_navbar{
-    width: 60vw;
-    display: flex;
-    gap: 180px;
-  
-  }
-  .nav_links a {
-    text-decoration: none;
-    color: white;
-    margin-right: 20px;
-    transition: all 0.3s ease;
-    font-size: 25px;
-  }
-  
-  .nav_links a:hover {
-    color: #2e9d78b4;
-  }
-  .button_container{
-    /* background-color: red; */
-    width:200px ;
-    display: flex;
+
+  .venue_selection, .addons_selection, .meal_selection {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
-  .details_button {
-    padding: 8px 16px;
-    background-color: #efc16b54;
-    color: black;
-    /* border: 1px solid white; */
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    /* background-color: transparent; */
-  }
-  
-  
-  .navbar_event_conference{
-    position: fixed;
-    top: 1px;
-    z-index: 99;
-  }
-  .btn-disabled {
-    opacity: 0.5; /* Reduce opacity to visually indicate disabled state */
-    cursor: not-allowed; /* Change cursor to indicate that the button is not clickable */
-  }
-  @media (max-width: 700px) {
-    navbar {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px 20px;
-        background-color: #133b6a;
-        color: white;
-        width: 100vw;
-    }
-    .nav_links {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .left_navbar {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 0;
-    }
+}
 
+@media (max-width: 480px) {
+  .company_logo {
+    font-size: 1.2rem;
+  }
+
+  .nav_links a {
+    font-size: 0.9rem;
+  }
+
+  .venue_main, .av_data, .meal_item {
+    padding: 15px;
+  }
+
+  .table_item_data th, .table_item_data td {
+    font-size: 12px;
+  }
 }

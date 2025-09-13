@@ -7,14 +7,14 @@
 .first_page {
   display: flex;
   height: 100vh;
-  background-image: url("https://cdn.pixabay.com/photo/2018/07/05/14/45/conference-3518465_1280.jpg");
+  background-image: url("https://alexasprings.com/wp-content/uploads/2020/12/Group-of-people-working-in-mod.jpg");
   background-size: cover;
   background-position: center;
   justify-content: center;
   align-items: center;
   color: white;
   overflow: hidden; 
-  background-color: rgb(185, 186, 187);
+  background-color: #dfd3c3;
   /* position: relative; */
 }
 
@@ -25,7 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
 }
 
 .first_page h1 {
@@ -34,18 +34,20 @@
 }
 
 .get-started-btn {
-  background-color:#EFC16B;
+  background-color:#7db9b3;
   /* color: white; */
   color: black;
   border: none;
   padding: 20px 40px;
   font-size: 19px;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
 .get-started-btn:hover {
-  background-color: #c1974a;
+  background-color: #685454;
+   font-size: 21px;
+
 }
 
 .getstarted_btn {
