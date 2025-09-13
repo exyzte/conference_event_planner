@@ -143,11 +143,7 @@ h1, h2, h3 {
   margin: 0 auto 30px;
 }
 
-/*
-  =================================
-  Item Selection Grid
-  =================================
-*/
+/*Item Selection Gridn*/
 
 .venue_selection, .addons_selection, .meal_selection {
   display: grid;
@@ -275,9 +271,8 @@ h1, h2, h3 {
 }
 
 /*
-  =================================
-  Total Cost Display Table
-  =================================
+  
+  Ttal Cost Display Table
 */
 
 .table_item_data {
@@ -329,9 +324,8 @@ h1, h2, h3 {
 }
 
 /*
-  =================================
   Responsive Design (Mobile First)
-  =================================
+  
 */
 
 @media (max-width: 768px) {
