@@ -126,6 +126,7 @@
 
 .budget_heading {
   font-size: 40px;
+  color: #f5f1da;
 }
 
 .budget_sentence {
@@ -135,21 +136,46 @@
 /* Responsive Design Mobile */
 
 @media (max-width: 768px) {
+    .aboutus_main {
+        width: 750px;
+        color: white;
+        /* background-color: rgba(0,0,0,0.1); */
+        
+      }
     .aboutus_container {
         max-width: 760px;
         display: flex;
         flex-direction: column;
-        overflow: scroll;
-
+        min-width: 0;
+        min-height: 0;
     }
-    .aboutus_container p {
-        max-width: 700;
-        font-size: 1em;
-    }
-    .main_event {
-        max-width: 700px;
+    .aboutus_content {
         display: flex;
         flex-direction: column;
-        padding: 5px;
+        font-size: 0.8em;
+        padding: 25px;
+        justify-content: center;
+        align-items: center;
+        min-width: 0;
+        min-height: 0;
+    }
+    .aboutus_header {
+        display: flex;
+        flex-direction: column;
+        max-width: 760px;
+        font-size: 1em;
+        padding: 15px;
+        justify-content: center;
+        align-items: center;
+        min-width: 0;
+        min-height: 0;
+    }
+    .main_event {
+        max-width: 768px;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        min-width: 0;
+        
     }
     }
