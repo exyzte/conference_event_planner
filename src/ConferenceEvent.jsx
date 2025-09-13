@@ -40,15 +40,51 @@ const ConferenceEvent = () => {
           dispatch(decrementAvQuantity(index));
     };
 
+    const handleIncrementAvQuantity = (index) => {
+          dispatch(incrementAvQuantity(index));
+    }
+
     const handleMealSelection = (index) => {
         const item = mealsItems[index];
+        if(item.selected && item.type === "mealForPeople") {
         const newNumberOfPeople = item.selected ? numberOfPeople : 0;
         dispatch(toggleMealSelection(index, newNumberOfPeople));
+        } 
+        else {
+            dispatch(toggleMealSelection(index));
+        }
     };
 
     const getItemsFromTotalCost = () => {
         const items = [];
+        venueItems.forEach((item) => {
+            if (item.quantity > 0) {
+                items.push({ ...item, type: "venue" });
+            }
+        });
+        avItems.forEach((item)=> {
+            if (
+                item.quantity > 0 && 
+                !items.some((i) => i.name === item.name && i.type === "av")
+            ) {
+                items.push({ ...items, type: "av" });
+            }
+        });
+        mealsItems.forEach((item) => {
+            if(item.selected) {
+                const itemForDisplay = { ...item, type: "meals" };
+                if(item.numberOfPeople) {
+                    itemForDisplay.numberOfPeople = numberOfPeople;
+                }
+            }
+        });
+        return items;
     };
+    mealsItems.forEach((item) => {
+        if (item.selected) {
+            const itemForDisplay = { ...item, type: "meals" };
+        }
+    })
 
     const items = getItemsFromTotalCost();
 
@@ -65,16 +101,24 @@ const ConferenceEvent = () => {
             addonsItems.forEach((item) => {
                 totalCost += item.cost * item.quantity;
             });
-        }  else if (section = "meal") { {/* fix this */}
+        }  else if (section = "meals") {
             mealsItems.forEach((item) => {
-                totalCost += item.cost * item.quantity;
+                if(item.selected) {
+                totalCost += item.cost * numberOfPeople;
+                }
             });
         }
         return totalCost;
       };
     const venueTotalCost = calculateTotalCost("venue");
     const avTotalCost = calculateTotalCost("av")
-
+    const mealsTotalCost = calculateTotalCost("meals");
+    const totalCosts = {
+        venue: venueTotalCost, 
+        av: avTotalCost, 
+        meals: mealsTotalCost,
+    };
+    const total_amount = totalCosts.venue + totalCosts.av + totalCosts.meals;
     const navigateToProducts = (idType) => {
         if (idType == '#venue' || idType == '#addons' || idType == '#meals') {
           if (showItems) { // Check if showItems is false
@@ -199,6 +243,7 @@ const ConferenceEvent = () => {
                                         />
                                 </div>
                                 <div className="meal_selection">
+                                
                                         {mealsItems.map((item, index)=> {
                                             <div className="meal_item" key={index} style={{ padding: 15 }}>
                                                 <div className="inner">
@@ -212,8 +257,7 @@ const ConferenceEvent = () => {
                                             </div>
                                         })}
                                 </div>
-                                <div className="total_cost">Total Cost: </div>
-
+                                <div className="total_cost">Total Cost: {mealsTotalCost}</div>
 
                             </div>
                         </div>
